@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <!-- Font: Hind (teks biasa) + Josefin Sans (judul) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400&family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            red: '#5f0808',
+            yellow: '#ffc600',
+            white: '#ffffff',
+            blue: '#020014',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="m-0 font-['Hind',sans-serif]">
+
+  <!-- Background -->
+  <main class="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-blue p-4">
+    <img
+      src="assets/Background.png"
+      alt="Cinema background"
+      class="absolute inset-0 h-full w-full object-cover [box-shadow:inset_4px_4px_61px_51px_rgba(0,0,0,0.47)]"
+    />
+
+    <!-- Overlay merah tipis (soft-light) -->
+    <div class="pointer-events-none absolute inset-0 bg-red/30 mix-blend-soft-light"></div>
+
+    <!-- Card glass -->
+    <section
+      class="relative flex w-full max-w-[843px] flex-col items-center justify-center rounded-lg border border-white/20 bg-red/20 px-6 py-12 backdrop-blur-md [box-shadow:0px_4px_18px_13px_rgba(0,0,0,0.25)] sm:min-h-[545px]"
+    >
+
+      <!-- Judul -->
+      <p class="m-0 text-[36px] font-light text-white">Login</p>
+      <h1
+        class="m-0 mb-6 max-w-[577px] text-center font-['Josefin_Sans',sans-serif] text-[40px] font-bold leading-[0.85] tracking-[-3px] text-white sm:text-[60px] sm:tracking-[-5px]"
+      >
+        To Explore The Art<br />of Expression
+      </h1>
+
+      <!-- Form -->
+      <form action="#" method="post" class="flex w-full max-w-[532px] flex-col">
+
+        <!-- Input -->
+        <label for="email" class="sr-only">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          required
+          class="h-[42px] w-full rounded-lg border-0 bg-[#e9e9e9] px-4 text-[21px] text-black outline-none placeholder:text-black focus:ring-2 focus:ring-yellow"
+        />
+
+        <label for="password" class="sr-only">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          required
+          class="mt-3 h-[42px] w-full rounded-lg border-0 bg-[#e9e9e9] px-4 text-[21px] text-black outline-none placeholder:text-black focus:ring-2 focus:ring-yellow"
+        />
+
+        <!-- Remember me + Forgot password -->
+        <div class="mt-3 flex items-center justify-between text-[21px] text-white">
+          <label for="remember" class="flex cursor-pointer items-center gap-2">
+            <input
+              id="remember"
+              type="checkbox"
+              name="remember"
+              class="h-[19px] w-[20px] cursor-pointer rounded-sm accent-yellow"
+            />
+            Remember me
+          </label>
+          <a href="#" class="text-white no-underline hover:underline">Forgot Password?</a>
+        </div>
+
+        <!-- Tombol login -->
+        <button
+          type="submit"
+          class="mx-auto mt-3 h-[42px] w-[146px] cursor-pointer rounded-lg border-0 bg-yellow text-[21px] text-black transition hover:brightness-95"
+        >
+          Login
+        </button>
+
+        <!-- Link sign up -->
+        <p class="mb-0 mt-3 text-center text-[21px] text-white">
+          Don’t have any account?
+          <a href="#" class="text-white no-underline hover:underline">Sign up!</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
