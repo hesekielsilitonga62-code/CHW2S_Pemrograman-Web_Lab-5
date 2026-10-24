@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Jam dan Tanggal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body class="m-0 bg-blue font-['Hind',sans-serif] text-white">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+    <a href="Beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+
+    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+      <img src="assets/search.svg" alt="Search" class="h-[29px] w-[29px]" />
+      <input
+        type="search"
+        placeholder="Search movie here"
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+      />
+    </div>
+
+    <nav class="flex items-center gap-10">
+      <a href="#"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+      <a href="Login.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+    </nav>
+  </header>
+
+  <main class="px-4 pb-[100px] pt-10 md:px-0 md:pt-[68px]">
+
+    <!-- ===================== DETAIL FILM ===================== -->
+    <section class="mx-auto flex w-full max-w-[850px] flex-col gap-6 md:flex-row md:gap-[52px]">
+
+      <!-- Poster + tombol -->
+      <div class="w-full md:w-[308px] md:shrink-0">
+        <img src="assets/Love 911.png" alt="Love 911" class="h-auto w-full rounded-lg object-cover md:h-[437px]" />
+        <div class="mt-1 flex gap-[10px]">
+          <button type="button" class="h-[36px] flex-1 cursor-pointer rounded-lg border-0 bg-yellow text-[20px] font-light text-black transition hover:brightness-95">
+            Watch Trailer
+          </button>
+          <button type="button" aria-label="Add to favorites" class="flex h-[36px] w-[52px] cursor-pointer items-center justify-center rounded-lg border-0 bg-yellow transition hover:brightness-95">
+            <svg viewBox="0 0 24 24" class="h-[24px] w-[24px] fill-red" aria-hidden="true">
+              <path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.2 2.7 4.5 6.3 4.5c2.1 0 3.9 1.1 5.7 3.2 1.8-2.1 3.6-3.2 5.7-3.2 3.6 0 5.4 3.7 3.9 7.2C19.5 16.4 12 21 12 21z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Info film -->
+      <div class="min-w-0 flex-1">
+        <div class="flex items-center gap-3">
+          <h1 class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none md:text-[64px]">Love 911</h1>
+          <div class="flex items-center gap-2 text-[18px] font-light">
+            <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
+          </div>
+        </div>
+
+        <dl class="m-0 mt-2 text-[19px] font-light leading-8">
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Genre Film</dt><span aria-hidden="true">:</span><dd class="m-0">Comedy, Romance</dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Producer</dt><span aria-hidden="true">:</span><dd class="m-0">Baek Sun-hee, Son Seung-jin</dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Director</dt><span aria-hidden="true">:</span><dd class="m-0">Jeong Gi-hun</dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Author</dt><span aria-hidden="true">:</span><dd class="m-0">Jeong Gi-hun, Park Sang-min</dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Cast</dt><span aria-hidden="true">:</span><dd class="m-0">Go Soo, Han Hyo-Joo</dd></div>
+        </dl>
+
+        <h2 class="m-0 mt-10 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Synopsis</h2>
+        <p class="m-0 max-w-[500px] text-[19px] font-light leading-8">
+          A firefighter who lost his wife in a tragic accident and a doctor who is facing a lawsuit over a medical malpractice attempt to heal each other's emotional wounds as they work together in life-threatening emergency situations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== PILIH TANGGAL ===================== -->
+    <section class="mx-auto mt-10 w-full max-w-[1236px]" aria-label="Pilih tanggal">
+      <div id="date-list" role="group" class="flex flex-wrap justify-center gap-3 md:gap-5"></div>
+    </section>
+
+    <!-- ===================== PILIH JAM ===================== -->
+    <section class="mx-auto mt-14 w-full max-w-[1063px] overflow-hidden rounded-lg" aria-label="Pilih jam">
+      <div class="flex h-[55px] items-center bg-yellow px-[13px]">
+        <h2 id="date-label" class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-bold text-black md:text-[30px]"></h2>
+      </div>
+      <div class="bg-red px-3 pb-8 pt-3">
+        <p class="m-0 text-[26px] leading-tight">
+          <span class="font-bold">Reguler</span>
+          <span class="ml-3 font-light">Rp 50.000</span>
+        </p>
+        <div id="time-list" role="group" class="mt-1 flex flex-wrap gap-3"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="flex min-h-[239px] w-full flex-col items-center justify-center gap-8 bg-red py-8">
+    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">About Us</a>
+    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">Contact Us</a>
+  </footer>
+
+</body>
+</html>
