@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            red: '#5f0808',
+            yellow: '#ffc600',
+            white: '#ffffff',
+            blue: '#020014',
+          },
+        },
+      },
+    };
+  </script>
+
+  <script defer src="script.js"></script>
+</head>
+
+<body class="m-0 bg-blue font-['Hind',sans-serif] text-white">
+
+
+  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+    <a href="beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+
+    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+      <img src="assets/search.svg" alt="Search" class="h-[29px] w-[29px]" />
+      <input
+        type="search"
+        placeholder="Search movie here"
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+      />
+    </div>
+
+    <nav class="flex items-center gap-10">
+      <a href="#"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+      <a href="login.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+    </nav>
+  </header>
+
+
+  <main class="mx-auto w-full max-w-[823px] px-4 py-10 md:px-0 md:py-[40px]">
+    <div class="flex flex-col gap-6 md:flex-row">
+
+      <img src="assets/Love 911.png" alt="Love 911"
+        class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0"
+      />
+
+      <!-- Kolom kanan -->
+      <div class="flex min-w-0 flex-1 flex-col">
+
+        <!-- Judulu film -->
+        <div class="flex items-center gap-3">
+          <h1 class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none">Love 911</h1>
+          <div class="flex items-center gap-2 text-[16px] font-light">
+            <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
+          </div>
+        </div>
+
+        <p class="m-0 mt-2 text-[17px] font-light leading-tight">Plaza Medan Fair XXI, Regular</p>
+        <p class="m-0 text-[17px] font-light leading-tight">Wednesday, 21 October 2026, 10:00</p>
+
+
+        <section class="mt-4 rounded-lg bg-red px-3 py-2">
+          <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Detail Transaksi</h2>
+          <dl class="m-0 grid grid-cols-[1fr_auto] gap-x-8 text-[17px] font-light leading-snug md:grid-cols-[1fr_1fr]">
+            <dt>1 Tiket</dt>
+            <dd class="m-0">J8</dd>
+            <dt>Reguler</dt>
+            <dd class="m-0">Rp50.000 x 1</dd>
+            <dt>Biaya Layanan</dt>
+            <dd class="m-0">Rp4.200 x 1</dd>
+          </dl>
+        </section>
+
+
+
+        <section class="mt-4 rounded-lg bg-red px-3 py-2">
+          <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Metode Pembayaran</h2>
+
+          <form id="payment-form" class="m-0">
+            <fieldset class="m-0 border-0 p-0">
+              <legend class="sr-only">Pilih metode pembayaran</legend>
+
+              <label class="flex cursor-pointer items-center justify-between text-[17px] font-light leading-[1.45]">
+                Dana
+                <input type="radio" name="payment" value="Dana" checked class="radio-pay mr-3 md:mr-[14px]" />
+              </label>
+              <label class="flex cursor-pointer items-center justify-between text-[17px] font-light leading-[1.45]">
+                Gopay
+                <input type="radio" name="payment" value="Gopay" class="radio-pay mr-3 md:mr-[14px]" />
+              </label>
+              <label class="flex cursor-pointer items-center justify-between text-[17px] font-light leading-[1.45]">
+                Ovo
+                <input type="radio" name="payment" value="Ovo" class="radio-pay mr-3 md:mr-[14px]" />
+              </label>
+              <label class="flex cursor-pointer items-center justify-between text-[17px] font-light leading-[1.45]">
+                BNI
+                <input type="radio" name="payment" value="BNI" class="radio-pay mr-3 md:mr-[14px]" />
+              </label>
+            </fieldset>
+
+            <a href="#" class="mt-1 block text-center text-[16px] font-light text-yellow no-underline hover:underline">Pilih Pembayaran lainnya</a>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    
+    <section class="mt-5 overflow-hidden rounded-lg">
+      <div class="flex items-center justify-between bg-red px-4 py-3">
+        <span class="text-[25px] font-bold">Total Bayar</span>
+        <span id="total" class="font-bold text-[24px]" data-ticket="50000" data-fee="4200">Rp54.200</span>
+      </div>
+      <button
+        id="pay-button"
+        type="submit"
+        form="payment-form"
+        class="block h-[48px] w-full cursor-pointer border-0 bg-yellow font-['Josefin_Sans',sans-serif] text-[26px] text-black transition hover:brightness-95"
+      >
+        Lakukan Pembayaran
+      </button>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="flex min-h-[239px] w-full flex-col items-center justify-center gap-8 bg-red py-8">
+    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">About Us</a>
+    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">Contact Us</a>
+  </footer>
+
+  <style>
+    /* untuk pembayaran. kosong = lingkaran outline, terpilih = terisi putih */
+    .radio-pay {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      margin-left: 0;
+      border: 2px solid #fff;
+      border-radius: 9999px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .radio-pay:checked { background: #fff; }
+    .radio-pay:focus-visible { outline: 2px solid #ffc600; outline-offset: 2px; }
+  </style>
+
+
+</body>
+</html>
