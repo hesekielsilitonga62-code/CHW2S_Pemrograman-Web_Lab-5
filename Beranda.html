@@ -9,22 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            red: '#5f0808',
-            yellow: '#ffc600',
-            white: '#ffffff',
-            blue: '#020014',
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 
 <body class="m-0 bg-blue font-['Hind',sans-serif] text-white">
@@ -52,18 +38,24 @@
 
   <!-- ===================== HERO / BANNER ===================== -->
   <section class="relative h-[501px] w-full overflow-hidden">
-    <img src="assets/Avangers_hero.png" alt="Avengers: Endgame" class="h-full w-full object-cover" />
+	<div class="transition-all flex absolute h-full" id="carousel">
+		<img class="h-full w-screen position-center object-cover" src="assets/Avangers_hero.png" alt="Avengers: Endgame" />
+		<img class="h-full w-screen position-center object-cover" src="assets/the-devil-wears-prada-2.webp" alt="The Devil Wears Prada 2" />
+		<img class="h-full w-screen position-center object-cover" src="assets/jujutsu-kaisen-season-2.jpg" alt="Jujutsu Kaisen Season 2" />
+	</div>
 
     <!-- Fade bawah ke warna blue -->
     <div class="pointer-events-none absolute inset-x-0 bottom-0 h-[140px] bg-gradient-to-b from-transparent to-blue"></div>
 
     <!-- Tombol prev / next -->
-    <button type="button" class="absolute left-6 top-[275px] border-0 bg-transparent p-0 md:left-24" aria-label="Previous">
-      <img src="assets/7576.svg" alt="" class="h-auto w-[52px]" />
-    </button>
-    <button type="button" class="absolute right-6 top-[275px] border-0 bg-transparent p-0 md:right-24" aria-label="Next">
-      <img src="assets/7567.svg" alt="" class="h-auto w-[52px] rotate-180" />
-    </button>
+	<div class="top-0 left-0 flex size-full absolute">
+		<button data-banner-button type="button" class="absolute left-6 top-[275px] border-0 bg-transparent p-0 md:left-24" aria-label="Previous">
+		  <img src="assets/arrow-left.svg" alt="" class="h-auto w-[52px]" />
+		</button>
+		<button data-banner-button type="button" class="absolute right-6 top-[275px] border-0 bg-transparent p-0 md:right-24" aria-label="Next">
+		  <img class="h-auto w-[52px] rotate-180" src="assets/arrow-left.svg" alt="" />
+		</button>
+	</div>
   </section>
 
   <main class="mx-auto w-full max-w-[1440px] px-4 md:px-[74px]">
