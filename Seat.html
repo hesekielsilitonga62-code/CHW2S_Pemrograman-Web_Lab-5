@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIKETAN — Pilih Kursi</title>
+  <style>
+    :root {
+      --navy: #030017;
+      --maroon: #5b160e;
+      --maroon-light: #76251b;
+      --gold: #facb43;
+      --occupied: #85858a;
+      --text: #f8f5fb;
+      --muted: #c7c2d0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f7f7f7;
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+    .site {
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      background: var(--navy);
+      min-height: 100vh;
+      box-shadow: 0 8px 35px #00000012;
+    }
+    .navbar {
+      min-height: 58px;
+      padding: 0 28px;
+      background: var(--maroon);
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+    .brand {
+      color: var(--gold);
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .search {
+      margin: 0 auto;
+      width: min(420px, 48%);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border: 1px solid #8b4237;
+      border-radius: 30px;
+      background: #71291f;
+      color: var(--gold);
+    }
+    .nav-svg { display: block; width: 22px; height: 22px; flex: 0 0 auto; }
+    .search-svg { width: 17px; height: 17px; }
+    .search input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: white;
+      font-size: 13px;
+    }
+    .search input::placeholder { color: #d7b1a7; }
+    .nav-icons { display: flex; gap: 20px; color: var(--gold); font-size: 21px; }
+    main { padding: 28px clamp(16px, 5vw, 58px) 34px; }
+    h1 {
+      margin: 0 0 28px;
+      text-align: center;
+      font-size: clamp(27px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+    .screen-wrap {
+      width: 68%;
+      margin: 0 auto 52px;
+      text-align: center;
+      position: relative;
+      padding-top: 8px;
+    }
+    .screen-curve {
+      width: 100%;
+      height: 35px;
+      border-top: 4px solid var(--gold);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      transform: perspective(120px) rotateX(4deg);
+      filter: drop-shadow(0 0 5px #facb4325);
+    }
+    .screen-label {
+      position: absolute;
+      top: 22px;
+      left: 0;
+      right: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .seats {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(6px, 1.15vw, 12px);
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .seat-row {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr)) clamp(12px, 2.6vw, 26px) repeat(8, minmax(0, 1fr));
+      gap: clamp(4px, .8vw, 8px);
+      width: 100%;
+    }
+    .seat {
+      appearance: none;
+      border: 0;
+      min-width: 0;
+      aspect-ratio: 1.12 / 1;
+      border-radius: 5px;
+      background: var(--gold);
+      color: #281b00;
+      font-size: clamp(9px, 1.3vw, 13px);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+    }
+    .seat:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 12px #facb4340; }
+    .seat.selected { background: var(--maroon-light); color: white; box-shadow: inset 0 0 0 1px #a84b3c; }
+    .seat.occupied { background: var(--occupied); color: white; cursor: not-allowed; }
+    .seat:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+    .legend {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 30px 0 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 7px; }
+    .dot { width: 13px; height: 13px; display: inline-block; border-radius: 4px; }
+    .dot.empty { background: var(--gold); }
+    .dot.occupied { background: var(--occupied); }
+    .dot.selected { background: var(--maroon-light); }
+    .summary {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 16px 18px;
+      border: 1px solid #28233e;
+      border-radius: 12px;
+      background: #09051f;
+    }
+    .summary-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .summary-title { font-weight: 750; }
+    .count { color: var(--gold); font-size: 14px; white-space: nowrap; }
+    .chosen { margin-top: 9px; min-height: 22px; color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+    .actions { display: flex; gap: 10px; margin-top: 15px; }
+    .btn {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 7px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-reset { color: white; background: #29253d; }
+    .btn-confirm { margin-left: auto; color: #251900; background: var(--gold); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .message { min-height: 18px; margin-top: 10px; color: var(--gold); font-size: 13px; }
+    footer {
+      padding: 23px 16px;
+      background: var(--maroon);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    footer a { color: white; text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+    @media (max-width: 520px) {
+      .navbar { padding: 0 14px; gap: 12px; min-height: 54px; }
+      .brand { font-size: 17px; }
+      .search { width: auto; flex: 1; padding: 8px 10px; }
+      .nav-icons { gap: 10px; }
+      .nav-icons .nav-svg { width: 19px; height: 19px; }
+      .search-svg { width: 16px !important; height: 16px !important; }
+      .nav-icons .ticket-icon { display: inline-flex; }
+      main { padding: 25px 14px 28px; }
+      .screen-wrap { width: 82%; margin-bottom: 42px; }
+      .seats { gap: 5px; }
+      .seat-row { grid-template-columns: repeat(8, minmax(0, 1fr)) 12px repeat(8, minmax(0, 1fr)); gap: 3px; }
+      .seat { border-radius: 3px; font-size: clamp(5px, 1.6vw, 8px); }
+      .legend { gap: 12px; font-size: 12px; margin-top: 24px; }
+      .dot { width: 11px; height: 11px; }
+      .summary { padding: 14px; }
+      .actions { flex-wrap: wrap; }
+      .btn { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="navbar">
+      <a class="brand" href="#" aria-label="TIKETAN beranda">TIKETAN</a>
+      <label class="search" aria-label="Cari film">
+        <svg class="nav-svg search-svg" aria-hidden="true" focusable="false" width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.7938 22.7853C26.0566 22.1028 25.3391 21.4007 24.6422 20.6797C24.0567 20.1047 23.7041 19.6863 23.7041 19.6863L19.297 17.6522C21.0616 15.7182 22.0354 13.2282 22.0357 10.6495C22.0357 4.77856 17.0934 0 11.0178 0C4.94229 0 0 4.77856 0 10.6495C0 16.5204 4.94229 21.2989 11.0178 21.2989C13.7928 21.2989 16.3221 20.2948 18.2629 18.6533L20.3673 22.9131C20.3673 22.9131 20.8001 23.2539 21.3951 23.8198C22.0042 24.372 22.8054 25.119 23.5735 25.8995L25.7109 28.0172L26.6616 29L30 25.7732L28.9832 24.8543C28.3867 24.2884 27.5902 23.5368 26.7938 22.7853ZM11.0178 18.2562C6.67838 18.2562 3.14795 14.8438 3.14795 10.6495C3.14795 6.45509 6.67838 3.0427 11.0178 3.0427C15.3573 3.0427 18.8877 6.45509 18.8877 10.6495C18.8877 14.8438 15.3573 18.2562 11.0178 18.2562Z" fill="#FFC600"/>
+</svg>
+        <input type="search" placeholder="Search movie here" />
+      </label>
+      <div class="nav-icons">
+        <span class="ticket-icon" title="Tiket"><svg class="nav-svg" aria-hidden="true" focusable="false" width="42" height="29" viewBox="0 0 42 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.3571 0H2.07143C0.932143 0 0 0.932143 0 2.07143V9.425C0 10.4193 0.683571 11.2686 1.65714 11.455C2.36127 11.5956 2.99492 11.9758 3.45024 12.531C3.90556 13.0862 4.1544 13.782 4.1544 14.5C4.1544 15.218 3.90556 15.9138 3.45024 16.469C2.99492 17.0242 2.36127 17.4044 1.65714 17.545C0.683571 17.7314 0 18.5807 0 19.575V26.9286C0 28.0679 0.932143 29 2.07143 29H39.3571C40.4964 29 41.4286 28.0679 41.4286 26.9286V19.575C41.4286 18.5807 40.745 17.7314 39.7714 17.545C39.0673 17.4044 38.4337 17.0242 37.9783 16.469C37.523 15.9138 37.2742 15.218 37.2742 14.5C37.2742 13.782 37.523 13.0862 37.9783 12.531C38.4337 11.9758 39.0673 11.5956 39.7714 11.455C40.745 11.2686 41.4286 10.4193 41.4286 9.425V2.07143C41.4286 0.932143 40.4964 0 39.3571 0ZM37.2857 7.95429C34.8 9.135 33.1429 11.6621 33.1429 14.5C33.1429 17.3379 34.8 19.865 37.2857 21.0457V24.8571H4.14286V21.0457C6.62857 19.865 8.28572 17.3379 8.28572 14.5C8.28572 11.6621 6.62857 9.135 4.14286 7.95429V4.14286H37.2857V7.95429Z" fill="#FFC600"/>
+<path d="M15.5979 21.2322L20.7144 17.8143L25.8308 21.2322L24.1322 15.6807L27.9644 11.8486L23.0344 11.4136L20.7144 6.73218L18.3944 11.4136L13.4644 11.8486L17.2965 15.6807L15.5979 21.2322Z" fill="#FFC600"/>
+</svg></span>
+        <span title="Profil"><svg class="nav-svg" aria-hidden="true" focusable="false" width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.05556 6.44444C8.05556 4.73527 8.73452 3.0961 9.94309 1.88753C11.1517 0.678966 12.7908 0 14.5 0C16.2092 0 17.8483 0.678966 19.0569 1.88753C20.2655 3.0961 20.9444 4.73527 20.9444 6.44444C20.9444 8.15362 20.2655 9.79279 19.0569 11.0014C17.8483 12.2099 16.2092 12.8889 14.5 12.8889C12.7908 12.8889 11.1517 12.2099 9.94309 11.0014C8.73452 9.79279 8.05556 8.15362 8.05556 6.44444ZM8.05556 16.1111C5.91909 16.1111 3.87013 16.9598 2.35942 18.4705C0.848708 19.9812 0 22.0302 0 24.1667C0 25.4485 0.509225 26.6779 1.41565 27.5844C2.32208 28.4908 3.55145 29 4.83333 29H24.1667C25.4485 29 26.6779 28.4908 27.5844 27.5844C28.4908 26.6779 29 25.4485 29 24.1667C29 22.0302 28.1513 19.9812 26.6406 18.4705C25.1299 16.9598 23.0809 16.1111 20.9444 16.1111H8.05556Z" fill-rule="evenodd" clip-rule="evenodd" fill="#FFC600"/>
+</svg></span>
+      </div>
+    </header>
+
+    <main>
+      <h1>Select Your Seat</h1>
+      <div class="screen-wrap" aria-label="Layar bioskop">
+        <div class="screen-curve"></div>
+        <div class="screen-label">Layar Bioskop</div>
+      </div>
+
+      <section class="seats" id="seats" aria-label="Pilih kursi bioskop"></section>
+
+      <div class="legend" aria-label="Keterangan status kursi">
+        <span class="legend-item"><i class="dot empty"></i>Kosong</span>
+        <span class="legend-item"><i class="dot occupied"></i>Terisi</span>
+        <span class="legend-item"><i class="dot selected"></i>Pilihan kamu</span>
+      </div>
+
+      <section class="summary" aria-live="polite">
+        <div class="summary-top">
+          <span class="summary-title">Kursi pilihan kamu</span>
+          <span class="count"><span id="count">0</span>/10 kursi</span>
+        </div>
+        <div class="chosen" id="chosen">Belum ada kursi yang dipilih.</div>
+        <div class="actions">
+          <button class="btn btn-reset" id="reset" type="button">Reset Pilihan</button>
+          <button class="btn btn-confirm" id="confirm" type="button" disabled>Konfirmasi Pilihan</button>
+        </div>
+        <div class="message" id="message"></div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </footer>
+  </div>
+
+  <script>
+    const ROWS = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L"];
+    const SEATS_PER_ROW = 16;
+    const MAX_SELECTION = 10;
+    const selected = new Set();
+    const seatsContainer = document.getElementById("seats");
+    const countEl = document.getElementById("count");
+    const chosenEl = document.getElementById("chosen");
+    const confirmBtn = document.getElementById("confirm");
+    const messageEl = document.getElementById("message");
+
+    // 11 baris x 16 kursi (A-L tanpa I), dengan lorong tengah setelah kursi nomor 8; semua kursi dimulai dalam keadaan kosong.
+    function renderSeats() {
+      seatsContainer.innerHTML = "";
+      ROWS.forEach(row => {
+        const rowElement = document.createElement("div");
+        rowElement.className = "seat-row";
+        for (let number = 1; number <= SEATS_PER_ROW; number++) {
+          // Sisipkan lorong kosong setelah kursi 8, bukan kursi ekstra.
+          if (number === 9) {
+            const aisle = document.createElement("div");
+            aisle.className = "aisle";
+            aisle.setAttribute("aria-hidden", "true");
+            rowElement.appendChild(aisle);
+          }
+          const id = `${row}${number}`;
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "seat" + (selected.has(id) ? " selected" : "");
+          button.textContent = id;
+          button.setAttribute("aria-label", `Kursi ${id}${selected.has(id) ? ", dipilih" : ", kosong"}`);
+          button.setAttribute("aria-pressed", String(selected.has(id)));
+          button.addEventListener("click", () => toggleSeat(id));
+          rowElement.appendChild(button);
+        }
+        seatsContainer.appendChild(rowElement);
+      });
+      updateSummary();
+    }
+
+    function toggleSeat(id) {
+      messageEl.textContent = "";
+      if (selected.has(id)) {
+        selected.delete(id);
+      } else if (selected.size < MAX_SELECTION) {
+        selected.add(id);
+      } else {
+        messageEl.textContent = "Maksimal 10 kursi dapat dipilih.";
+        return;
+      }
+      renderSeats();
+    }
+
+    function updateSummary() {
+      const list = [...selected];
+      countEl.textContent = list.length;
+      chosenEl.textContent = list.length ? list.join(", ") : "Belum ada kursi yang dipilih.";
+      confirmBtn.disabled = list.length === 0;
+    }
+
+    document.getElementById("reset").addEventListener("click", () => {
+      selected.clear();
+      messageEl.textContent = "";
+      renderSeats();
+    });
+
+    confirmBtn.addEventListener("click", () => {
+      messageEl.textContent = `Pilihan tersimpan sementara: ${[...selected].join(", ")}.`;
+    });
+
+    renderSeats();
+  </script>
+</body>
+</html>
