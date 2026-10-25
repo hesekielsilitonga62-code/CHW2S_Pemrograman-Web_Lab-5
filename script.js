@@ -1,4 +1,3 @@
-
 // carousel
 (() => {
 	const carousel = document.getElementById('carousel');
@@ -26,6 +25,20 @@
 
 		carousel.style.transform = `translateX(${0 - active_index}00vw)`;
 	});
+})();
+
+// Pemilihan Film
+(() => {
+	const btns = document.querySelectorAll('[data-movie-action]');
+
+	for (const btn of btns)
+	{
+		btn.addEventListener('click', () => {
+			const movie_id = btn.parentElement.parentElement.dataset.movieId;
+
+			window.location.replace(`Seat.html?id=${ movie_id }`);
+		});
+	}
 })();
 
 
@@ -131,16 +144,113 @@
 			btn.disabled = off;
 			btn.addEventListener('click', () => {
 				// disimpan supaya bisa dibaca halaman berikutnya (seat / pembayaran)
-				sessionStorage.setItem('tiketan_jadwal', JSON.stringify({
-					movie: MOVIE,
-					date: toKey(selectedDate),
-					time: t,
-				}));
-				window.location.href = NEXT_PAGE;
+				// sessionStorage.setItem('tiketan_jadwal', JSON.stringify({
+					// movie: MOVIE,
+					// date: toKey(selectedDate),
+					// time: t,
+				// }));
+				// window.location.href = NEXT_PAGE;
+				
+				const up = new URLSearchParams(window.location.search);
+				let new_location = `Pembayaran.html?id=${up.get('id')}`;
+
+				for (const seat of up.getAll('seat'))
+				{
+					new_location += `&seat=${seat}`;
+				}
+				
+				new_location += `&t=${t}`;
+				new_location += `&d=${toKey(selectedDate)}`;
+
+				window.location.replace(new_location);
 			});
 			return btn;
 		}));
 	};
 
 	render();
+})();
+
+// Seats
+(() => {
+	const ROWS = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L"];
+	const SEATS_PER_ROW = 16;
+	const MAX_SELECTION = 10;
+	const selected = new Set();
+	const seatsContainer = document.getElementById("seats");
+	const countEl = document.getElementById("count");
+	const chosenEl = document.getElementById("chosen");
+	const confirmBtn = document.getElementById("confirm");
+	const messageEl = document.getElementById("message");
+
+	// 11 baris x 16 kursi (A-L tanpa I), dengan lorong tengah setelah kursi nomor 8; semua kursi dimulai dalam keadaan kosong.
+	function renderSeats() {
+		seatsContainer.innerHTML = "";
+		ROWS.forEach(row => {
+		const rowElement = document.createElement("div");
+		rowElement.className = "seat-row";
+		for (let number = 1; number <= SEATS_PER_ROW; number++) {
+			// Sisipkan lorong kosong setelah kursi 8, bukan kursi ekstra.
+			if (number === 9) {
+			const aisle = document.createElement("div");
+			aisle.className = "aisle";
+			aisle.setAttribute("aria-hidden", "true");
+			rowElement.appendChild(aisle);
+			}
+			const id = `${row}${number}`;
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = "seat" + (selected.has(id) ? " selected" : "");
+			button.textContent = id;
+			button.setAttribute("aria-label", `Kursi ${id}${selected.has(id) ? ", dipilih" : ", kosong"}`);
+			button.setAttribute("aria-pressed", String(selected.has(id)));
+			button.addEventListener("click", () => toggleSeat(id));
+			rowElement.appendChild(button);
+		}
+		seatsContainer.appendChild(rowElement);
+		});
+		updateSummary();
+	}
+
+	function toggleSeat(id) {
+		messageEl.textContent = "";
+		if (selected.has(id)) {
+		selected.delete(id);
+		} else if (selected.size < MAX_SELECTION) {
+		selected.add(id);
+		} else {
+		messageEl.textContent = "Maksimal 10 kursi dapat dipilih.";
+		return;
+		}
+		renderSeats();
+	}
+
+	function updateSummary() {
+		const list = [...selected];
+		countEl.textContent = list.length;
+		chosenEl.textContent = list.length ? list.join(", ") : "Belum ada kursi yang dipilih.";
+		confirmBtn.disabled = list.length === 0;
+	}
+
+	document.getElementById("reset").addEventListener("click", () => {
+		selected.clear();
+		messageEl.textContent = "";
+		renderSeats();
+	});
+
+	confirmBtn.addEventListener("click", () => {
+		//messageEl.textContent = `Pilihan tersimpan sementara: ${[...selected].join(", ")}.`;
+		const up = new URLSearchParams(window.location.search);
+
+		let pl = `JamDanTanggal.html?id=${up.get('id')}`;
+
+		for (const _selected of selected)
+		{
+			pl += `&seat=${_selected}`;
+		}
+
+		window.location.replace(pl);
+	});
+
+	renderSeats();
 })();

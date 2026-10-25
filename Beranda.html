@@ -1,196 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beranda</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Beranda</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+	<link rel="stylesheet" href="style.css" />
+	<script defer src="script.js"></script>
 </head>
 
 <body class="m-0 bg-blue font-['Hind',sans-serif] text-white">
+	<!-- ===================== HEADER ===================== -->
+	<header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+		<a href="beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
-    <a href="beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+		<!-- Search bar -->
+		<div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+			<img src="assets/search.svg" alt="Search" class="h-[29px] w-[29px]" />
+			<input
+				type="search"
+				placeholder="Search movie here"
+				class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+			/>
+		</div>
 
-    <!-- Search bar -->
-    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
-      <img src="assets/search.svg" alt="Search" class="h-[29px] w-[29px]" />
-      <input
-        type="search"
-        placeholder="Search movie here"
-        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
-      />
-    </div>
+		<!-- Ikon tiket + akun -->
+		<nav class="flex items-center gap-10">
+			<a href="#"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+			<a href="login.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+		</nav>
+	</header>
 
-    <!-- Ikon tiket + akun -->
-    <nav class="flex items-center gap-10">
-      <a href="#"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
-      <a href="login.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
-    </nav>
-  </header>
-
-  <!-- ===================== HERO / BANNER ===================== -->
-  <section class="relative h-[501px] w-full overflow-hidden">
+	<!-- ===================== HERO / BANNER ===================== -->
+	<section class="relative h-[501px] w-full overflow-hidden">
 	<div class="transition-all flex absolute h-full" id="carousel">
 		<img class="h-full w-screen position-center object-cover" src="assets/Avangers_hero.png" alt="Avengers: Endgame" />
 		<img class="h-full w-screen position-center object-cover" src="assets/the-devil-wears-prada-2.webp" alt="The Devil Wears Prada 2" />
 		<img class="h-full w-screen position-center object-cover" src="assets/jujutsu-kaisen-season-2.jpg" alt="Jujutsu Kaisen Season 2" />
 	</div>
 
-    <!-- Fade bawah ke warna blue -->
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-[140px] bg-gradient-to-b from-transparent to-blue"></div>
+		<!-- Fade bawah ke warna blue -->
+		<div class="pointer-events-none absolute inset-x-0 bottom-0 h-[140px] bg-gradient-to-b from-transparent to-blue"></div>
 
-    <!-- Tombol prev / next -->
+		<!-- Tombol prev / next -->
 	<div class="top-0 left-0 flex size-full absolute">
 		<button data-banner-button type="button" class="absolute left-6 top-[275px] border-0 bg-transparent p-0 md:left-24" aria-label="Previous">
-		  <img src="assets/arrow-left.svg" alt="" class="h-auto w-[52px]" />
+			<img src="assets/arrow-left.svg" alt="" class="h-auto w-[52px]" />
 		</button>
 		<button data-banner-button type="button" class="absolute right-6 top-[275px] border-0 bg-transparent p-0 md:right-24" aria-label="Next">
-		  <img class="h-auto w-[52px] rotate-180" src="assets/arrow-left.svg" alt="" />
+			<img class="h-auto w-[52px] rotate-180" src="assets/arrow-left.svg" alt="" />
 		</button>
 	</div>
-  </section>
+	</section>
 
-  <main class="mx-auto w-full max-w-[1440px] px-4 md:px-[74px]">
+	<main class="mx-auto w-full max-w-[1440px] px-4 md:px-[74px]">
+		<!-- ===================== EXPLORE MOVIES ===================== -->
+		<section class="mt-[70px]">
+			<div class="flex items-end justify-between">
+				<div>
+					<h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[34px] font-bold leading-none">Explore Movies</h2>
+					<p class="m-0 text-[20px] font-light">Most watched movies recently in cinema</p>
+				</div>
+				<a href="#" class="text-[20px] font-bold text-white no-underline hover:underline">See all</a>
+			</div>
 
-    <!-- ===================== EXPLORE MOVIES ===================== -->
-    <section class="mt-[70px]">
-      <div class="flex items-end justify-between">
-        <div>
-          <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[34px] font-bold leading-none">Explore Movies</h2>
-          <p class="m-0 text-[20px] font-light">Most watched movies recently in cinema</p>
-        </div>
-        <a href="#" class="text-[20px] font-bold text-white no-underline hover:underline">See all</a>
-      </div>
+			<div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-      <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+				<!-- Pola kartu film: poster, judul, info, tombol beli + rating -->
+				<article data-movie-id="love911">
+					<img src="assets/Love 911.png" alt="Love 911" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Love 911</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Comedy, Romance | 2h 0m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a data-movie-action href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
+						</div>
+					</div>
+				</article>
 
-        <!-- Pola kartu film: poster, judul, info, tombol beli + rating -->
-        <article>
-          <img src="assets/Love 911.png" alt="Love 911" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Love 911</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Comedy, Romance | 2h 0m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
-            </div>
-          </div>
-        </article>
+				<article data-movie-id="jujutsukaisen0">
+					<img src="assets/Jujutsu kaisen 0.png" alt="Jujutsu Kaisen 0" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Jujutsu Kaisen 0</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Action, Dark Fantasy | 1h 45m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.4
+						</div>
+					</div>
+				</article>
 
-        <article>
-          <img src="assets/Jujutsu kaisen 0.png" alt="Jujutsu Kaisen 0" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Jujutsu Kaisen 0</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Action, Dark Fantasy | 1h 45m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.4
-            </div>
-          </div>
-        </article>
+				<article>
+					<img src="assets/Devil wears prada.png" alt="The Devil Wears Prada" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[27px] font-bold leading-tight">The Devil Wears Prada</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Comedy, Drama | 1h 49m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.6
+						</div>
+					</div>
+				</article>
 
-        <article>
-          <img src="assets/Devil wears prada.png" alt="The Devil Wears Prada" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[27px] font-bold leading-tight">The Devil Wears Prada</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Comedy, Drama | 1h 49m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.6
-            </div>
-          </div>
-        </article>
+				<article>
+					<img src="assets/Avangers.png" alt="Avengers: End Game" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[27px] font-bold leading-tight">Avengers : End Game</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Sci-Fi, Superhero | 3h 1m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
 
-        <article>
-          <img src="assets/Avangers.png" alt="Avengers: End Game" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[27px] font-bold leading-tight">Avengers : End Game</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Sci-Fi, Superhero | 3h 1m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
+		<!-- ===================== UPCOMING MOVIES ===================== -->
+		<section class="mb-[80px] mt-[70px]">
+			<div class="flex items-end justify-between">
+				<div>
+					<h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[34px] font-bold leading-none">Upcoming Movies</h2>
+					<p class="m-0 text-[20px] font-light">Prepare your self to see a new plot</p>
+				</div>
+				<a href="#" class="text-[20px] font-bold text-white no-underline hover:underline">See all</a>
+			</div>
 
-    <!-- ===================== UPCOMING MOVIES ===================== -->
-    <section class="mb-[80px] mt-[70px]">
-      <div class="flex items-end justify-between">
-        <div>
-          <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[34px] font-bold leading-none">Upcoming Movies</h2>
-          <p class="m-0 text-[20px] font-light">Prepare your self to see a new plot</p>
-        </div>
-        <a href="#" class="text-[20px] font-bold text-white no-underline hover:underline">See all</a>
-      </div>
+			<div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 
-      <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+				<article>
+					<img src="assets/kuasa gelap 1.png" alt="Kuasa Gelap" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Kuasa Gelap</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Horror, Mystery | 2h 0m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.7
+						</div>
+					</div>
+				</article>
 
-        <article>
-          <img src="assets/kuasa gelap 1.png" alt="Kuasa Gelap" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Kuasa Gelap</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Horror, Mystery | 2h 0m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.7
-            </div>
-          </div>
-        </article>
+				<article>
+					<img src="assets/Sore.png" alt="Sore: Istri Dari Masa Depan" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[22px] font-bold leading-tight">Sore : Istri Dari Masa Depan</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Drama, Sci-Fi | 1h 59m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.4
+						</div>
+					</div>
+				</article>
 
-        <article>
-          <img src="assets/Sore.png" alt="Sore: Istri Dari Masa Depan" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[22px] font-bold leading-tight">Sore : Istri Dari Masa Depan</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Drama, Sci-Fi | 1h 59m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.4
-            </div>
-          </div>
-        </article>
+				<article>
+					<img src="assets/mencuri raden saleh.png" alt="Mencuri Raden Saleh" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[27px] font-bold leading-tight">Mencuri Raden Saleh</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Action, Crime, Heist | 2h 34m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.6
+						</div>
+					</div>
+				</article>
 
-        <article>
-          <img src="assets/mencuri raden saleh.png" alt="Mencuri Raden Saleh" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[27px] font-bold leading-tight">Mencuri Raden Saleh</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Action, Crime, Heist | 2h 34m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.6
-            </div>
-          </div>
-        </article>
+				<article>
+					<img src="assets/agak laen.png" alt="Agak Laen: Menyala Pantiku" class="h-[437px] w-full rounded-lg object-cover" />
+					<h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[22px] font-bold leading-tight">Agak Laen : Menyala Pantiku</h3>
+					<p class="m-0 text-[20px] font-light">2026 | Comedy, Mystery | 2h 59m</p>
+					<div class="mt-3 flex items-center justify-between">
+						<a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
+						<div class="flex items-center gap-2 pr-2 text-[20px] font-light">
+							<img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
+						</div>
+					</div>
+				</article>
+			</div>
+		</section>
+	</main>
 
-        <article>
-          <img src="assets/agak laen.png" alt="Agak Laen: Menyala Pantiku" class="h-[437px] w-full rounded-lg object-cover" />
-          <h3 class="m-0 mt-2 font-['Josefin_Sans',sans-serif] text-[22px] font-bold leading-tight">Agak Laen : Menyala Pantiku</h3>
-          <p class="m-0 text-[20px] font-light">2026 | Comedy, Mystery | 2h 59m</p>
-          <div class="mt-3 flex items-center justify-between">
-            <a href="#" class="flex h-[36px] w-[97px] items-center justify-center rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Buy Ticket</a>
-            <div class="flex items-center gap-2 pr-2 text-[20px] font-light">
-              <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="flex min-h-[239px] w-full flex-col items-center justify-center gap-8 bg-red py-8">
-    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">About Us</a>
-    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">Contact Us</a>
-  </footer>
-
+	<!-- ===================== FOOTER ===================== -->
+	<footer class="flex min-h-[239px] w-full flex-col items-center justify-center gap-8 bg-red py-8">
+		<a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">About Us</a>
+		<a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">Contact Us</a>
+	</footer>
 </body>
 </html>

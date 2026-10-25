@@ -69,14 +69,32 @@
         </div>
 
         <p class="m-0 mt-2 text-[17px] font-light leading-tight">Plaza Medan Fair XXI, Regular</p>
-        <p class="m-0 text-[17px] font-light leading-tight">Wednesday, 21 October 2026, 10:00</p>
+        <p class="m-0 text-[17px] font-light leading-tight">
+			<script>
+				document.write(new URLSearchParams(window.location.search).get('d'));
+			</script>
+		</p>
 
 
         <section class="mt-4 rounded-lg bg-red px-3 py-2">
           <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Detail Transaksi</h2>
           <dl class="m-0 grid grid-cols-[1fr_auto] gap-x-8 text-[17px] font-light leading-snug md:grid-cols-[1fr_1fr]">
             <dt>1 Tiket</dt>
-            <dd class="m-0">J8</dd>
+            <dd class="m-0">
+				<script>
+					(() => {
+						const seat_data = new URLSearchParams(window.location.search).getAll('seat')
+						for (let idx = 0; idx < seat_data.length; ++idx)
+						{
+							if (idx > 0)
+							{
+								document.write(', ');
+							}
+							document.write(seat_data[idx]);
+						}
+					})();
+				</script>
+			</dd>
             <dt>Reguler</dt>
             <dd class="m-0">Rp50.000 x 1</dd>
             <dt>Biaya Layanan</dt>
