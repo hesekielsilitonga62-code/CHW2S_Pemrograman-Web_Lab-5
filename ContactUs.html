@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="m-0 flex min-h-screen flex-col bg-blue font-['Hind',sans-serif] text-white">
+  <!-- ===================== HEADER ===================== -->
+  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+    <a href="Beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+
+    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+      <img src="assets/Search.svg" alt="Search" class="h-[29px] w-[29px]" />
+      <input
+        type="search"
+        placeholder="Search movie here"
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+      />
+    </div>
+
+    <nav class="flex items-center gap-10">
+      <a href="Dashboard.html"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+      <a href="Profile.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-[1000px] flex-1 px-4 py-12 md:py-[60px]">
+
+    <h1 class="m-0 text-center font-['Josefin_Sans',sans-serif] text-[48px] font-bold leading-none md:text-[56px]">Contact Us</h1>
+    <p class="m-0 mt-3 text-center text-[20px] font-light text-white/70">Ada pertanyaan atau kendala? Tim Tiketan siap membantu.</p>
+
+    <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+
+      <!-- Info kontak -->
+      <section>
+        <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[28px] font-bold text-yellow">Hubungi Kami</h2>
+        <ul class="m-0 mt-4 flex list-none flex-col gap-4 p-0 text-[19px] font-light">
+          <li class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="h-[26px] w-[26px] shrink-0 fill-yellow" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.5 7v.2L12 12.4 19.5 7.2V7L12 12.2Z"/></svg><a href="mailto:chw2s@gmail.com" class="text-white no-underline hover:underline">chw2s@gmail.com</a></li>
+          <li class="flex items-center gap-3"><svg viewBox="0 0 24 24" class="h-[26px] w-[26px] shrink-0 fill-yellow" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.55 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.2.2 2.4.55 3.5a1 1 0 0 1-.25 1Z"/></svg><span>+62 8xx-xxxx-xxxx (Telepon / WhatsApp)</span></li>
+          <li class="flex items-start gap-3"><svg viewBox="0 0 24 24" class="h-[26px] w-[26px] shrink-0 fill-yellow" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><span>Alamat kantor: isi alamat di sini</span></li>
+        </ul>
+
+        <h2 class="m-0 mt-8 font-['Josefin_Sans',sans-serif] text-[28px] font-bold text-yellow">Jam Layanan</h2>
+        <p class="m-0 mt-2 text-[19px] font-light">Setiap hari, 09.00 &ndash; 21.00 WIB</p>
+      </section>
+
+      <!-- Form pesan -->
+      <section class="rounded-lg bg-red px-5 py-6">
+        <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[28px] font-bold">Kirim Pesan</h2>
+        <form id="contact-form" class="mt-4 flex flex-col gap-3">
+          <label for="c-name" class="sr-only">Nama</label>
+          <input id="c-name" name="name" type="text" required placeholder="Nama" class="h-[42px] w-full rounded-lg border-0 bg-[#e9e9e9] px-4 text-[19px] text-black outline-none placeholder:text-black/60 focus:ring-2 focus:ring-yellow" />
+          <label for="c-email" class="sr-only">Email</label>
+          <input id="c-email" name="email" type="email" required placeholder="Email" class="h-[42px] w-full rounded-lg border-0 bg-[#e9e9e9] px-4 text-[19px] text-black outline-none placeholder:text-black/60 focus:ring-2 focus:ring-yellow" />
+          <label for="c-message" class="sr-only">Pesan</label>
+          <textarea id="c-message" name="message" rows="5" required placeholder="Tulis pesanmu di sini" class="py-2 w-full rounded-lg border-0 bg-[#e9e9e9] px-4 text-[19px] text-black outline-none placeholder:text-black/60 focus:ring-2 focus:ring-yellow"></textarea>
+          <button type="submit" class="h-[42px] w-[146px] cursor-pointer self-start rounded-lg border-0 bg-yellow text-[20px] text-black transition hover:brightness-95">Kirim</button>
+          <p id="contact-status" class="m-0 min-h-[24px] text-[17px] font-light text-yellow" role="status"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="grid w-full grid-cols-1 items-center gap-6 bg-red px-4 py-10 md:min-h-[239px] md:grid-cols-2 md:gap-0 md:px-0">
+    <div class="flex justify-center">
+      <a href="Beranda.html" class="text-[56px] font-bold leading-none text-yellow no-underline">TIKETAN</a>
+    </div>
+    <div class="flex flex-col items-center gap-1 md:items-start">
+      <a href="AboutUs.html" class="text-[28px] font-bold text-white no-underline hover:underline">About Us</a>
+      <a href="ContactUs.html" class="text-[28px] font-bold text-white no-underline hover:underline">Contact Us</a>
+      <p class="m-0 text-[22px] font-light">&copy; Tiketan Kelompok CHW2S 2026</p>
+    </div>
+  </footer>
+</body>
+</html>

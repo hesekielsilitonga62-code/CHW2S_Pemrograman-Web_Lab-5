@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="m-0 flex min-h-screen flex-col bg-blue font-['Hind',sans-serif] text-white">
+  <!-- ===================== HEADER ===================== -->
+  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+    <a href="Beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+
+    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+      <img src="assets/Search.svg" alt="Search" class="h-[29px] w-[29px]" />
+      <input
+        type="search"
+        placeholder="Search movie here"
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+      />
+    </div>
+
+    <nav class="flex items-center gap-10">
+      <a href="Dashboard.html"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+      <a href="Profile.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-[1000px] flex-1 px-4 py-12 md:py-[60px]">
+
+    <h1 class="m-0 text-center font-['Josefin_Sans',sans-serif] text-[48px] font-bold leading-none md:text-[56px]">About Us</h1>
+    <p class="m-0 mt-3 text-center text-[20px] font-light text-white/70">Pesan tiket bioskop, tanpa antre.</p>
+
+    <!-- Latar belakang -->
+    <section class="mx-auto mt-10 max-w-[760px] text-center">
+      <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[28px] font-bold text-yellow">Latar Belakang</h2>
+      <p class="m-0 mt-3 text-[20px] font-light leading-relaxed">
+        Pemesanan tiket bioskop secara konvensional mengharuskan pengunjung datang ke loket, mengantre, dan menunggu hingga jadwal tayang. Pengunjung juga tidak dapat mengetahui ketersediaan kursi maupun jadwal tayang sebelum tiba di lokasi. Kondisi ini menjadi salah satu kendala utama bagi pengunjung bioskop.
+      </p>
+    </section>
+
+    <!-- Tentang Tiketan -->
+    <section class="mx-auto mt-10 max-w-[760px] text-center">
+      <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[28px] font-bold text-yellow">Tentang Tiketan</h2>
+      <p class="m-0 mt-3 text-[20px] font-light leading-relaxed">
+        Berangkat dari permasalahan tersebut, Tiketan hadir sebagai website pemesanan tiket bioskop yang memudahkan pengguna melihat daftar film, memilih bioskop dan jadwal tayang, memilih kursi pada denah studio, melakukan pembayaran, serta menerima tiket elektronik (e-ticket) berupa kode booking.
+      </p>
+    </section>
+
+    <!-- Alur layanan -->
+    <section class="mt-12">
+      <h2 class="m-0 text-center font-['Josefin_Sans',sans-serif] text-[28px] font-bold text-yellow">Yang Bisa Kamu Lakukan</h2>
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-lg bg-red px-5 py-4">
+          <h3 class="m-0 font-['Josefin_Sans',sans-serif] text-[22px] font-bold">1. Lihat Daftar Film</h3>
+          <p class="m-0 mt-1 text-[17px] font-light">Jelajahi film yang sedang tayang dan yang akan datang.</p>
+        </article>
+        <article class="rounded-lg bg-red px-5 py-4">
+          <h3 class="m-0 font-['Josefin_Sans',sans-serif] text-[22px] font-bold">2. Pilih Bioskop &amp; Jadwal</h3>
+          <p class="m-0 mt-1 text-[17px] font-light">Tentukan tanggal dan jam tayang sebelum berangkat.</p>
+        </article>
+        <article class="rounded-lg bg-red px-5 py-4">
+          <h3 class="m-0 font-['Josefin_Sans',sans-serif] text-[22px] font-bold">3. Pilih Kursi</h3>
+          <p class="m-0 mt-1 text-[17px] font-light">Pilih kursi langsung pada denah studio.</p>
+        </article>
+        <article class="rounded-lg bg-red px-5 py-4">
+          <h3 class="m-0 font-['Josefin_Sans',sans-serif] text-[22px] font-bold">4. Bayar Online</h3>
+          <p class="m-0 mt-1 text-[17px] font-light">Pembayaran lewat Dana, Gopay, Ovo, atau Bank.</p>
+        </article>
+        <article class="rounded-lg bg-red px-5 py-4 sm:col-span-2 lg:col-span-2">
+          <h3 class="m-0 font-['Josefin_Sans',sans-serif] text-[22px] font-bold">5. Terima E-Ticket</h3>
+          <p class="m-0 mt-1 text-[17px] font-light">Tiket elektronik berupa kode booking langsung tersedia setelah pembayaran.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="grid w-full grid-cols-1 items-center gap-6 bg-red px-4 py-10 md:min-h-[239px] md:grid-cols-2 md:gap-0 md:px-0">
+    <div class="flex justify-center">
+      <a href="Beranda.html" class="text-[56px] font-bold leading-none text-yellow no-underline">TIKETAN</a>
+    </div>
+    <div class="flex flex-col items-center gap-1 md:items-start">
+      <a href="AboutUs.html" class="text-[28px] font-bold text-white no-underline hover:underline">About Us</a>
+      <a href="ContactUs.html" class="text-[28px] font-bold text-white no-underline hover:underline">Contact Us</a>
+      <p class="m-0 text-[22px] font-light">&copy; Tiketan Kelompok CHW2S 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
