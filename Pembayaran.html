@@ -9,21 +9,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            red: '#5f0808',
-            yellow: '#ffc600',
-            white: '#ffffff',
-            blue: '#020014',
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="stylesheet" href="style.css" />
+
+
+  <style>
+    /* radio: kosong = lingkaran outline, terpilih = terisi putih */
+    .radio-pay {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #fff;
+      border-radius: 9999px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .radio-pay:checked { background: #fff; }
+    .radio-pay:focus-visible { outline: 2px solid #ffc600; outline-offset: 2px; }
+
+    
+    #pay-button:disabled { opacity: .5; cursor: not-allowed; }
+  </style>
 
   <script defer src="script.js"></script>
 </head>
@@ -49,14 +56,12 @@
     </nav>
   </header>
 
-
   <main class="mx-auto w-full max-w-[823px] px-4 py-10 md:px-0 md:py-[40px]">
     <div class="flex flex-col gap-6 md:flex-row">
 
-  
+ 
       <img id="poster" src="assets/Love 911.png" alt="Love 911"
-        class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0"
-      />
+        class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0"/>
 
 
       <div class="flex min-w-0 flex-1 flex-col">
@@ -116,13 +121,17 @@
       </div>
     </div>
 
+
     <section class="mt-5 overflow-hidden rounded-lg">
       <div class="flex items-center justify-between bg-red px-4 py-3">
         <span class="text-[25px] font-bold">Total Bayar</span>
         <span id="total" class="text-[24px] font-bold" data-ticket="50000" data-fee="4200">Rp54.200</span>
       </div>
       <button
-        id="pay-button" type="submit" form="payment-form" class="block h-[48px] w-full cursor-pointer border-0 bg-yellow font-['Josefin_Sans',sans-serif] text-[26px] text-black transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"> Lakukan Pembayaran
+        id="pay-button"
+        type="submit"
+        form="payment-form"
+        class="block h-[48px] w-full cursor-pointer border-0 bg-yellow font-['Josefin_Sans',sans-serif] text-[26px] text-black transition hover:brightness-95">Lakukan Pembayaran
       </button>
     </section>
   </main>
@@ -133,23 +142,6 @@
     <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">Contact Us</a>
   </footer>
 
-  <style>
-    /* kosong = lingkaran outline, terpilih = terisi putih */
-    .radio-pay {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 14px;
-      height: 14px;
-      margin-left: 0;
-      border: 2px solid #fff;
-      border-radius: 9999px;
-      background: transparent;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .radio-pay:checked { background: #fff; }
-    .radio-pay:focus-visible { outline: 2px solid #ffc600; outline-offset: 2px; }
-  </style>
 
 </body>
 </html>
