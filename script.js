@@ -1,5 +1,3 @@
-// Data film (dipakai halaman JamDanTanggal & Pembayaran)
-// Data producer, director, author, cast, dan synopsis dirangkum dari sumber publik (IMDb, Wikipedia, situs resmi/media); silakan koreksi bila perlu.
 const MOVIES = {
 	love911: {
 		title: 'Love 911', poster: 'assets/Love 911.png', rating: '4.9',
