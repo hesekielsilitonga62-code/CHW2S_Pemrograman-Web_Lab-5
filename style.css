@@ -11,6 +11,8 @@
     --color-black: #000;
     --color-white: #ffffff;
     --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
     --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-bold: 700;
@@ -635,6 +637,10 @@
   }
   .font-\[\'Josefin_Sans\'\,sans-serif\] {
     font-family: 'Josefin Sans',sans-serif;
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-\[16px\] {
     font-size: 16px;
