@@ -53,19 +53,33 @@
 
 
 	const MOVIES = {
-		love911:        { title: 'Love 911',         poster: 'assets/Love 911.png',         rating: '4.9' },
-		jujutsukaisen0: { title: 'Jujutsu Kaisen 0', poster: 'assets/Jujutsu kaisen 0.png', rating: '4.4' },
+		love911:           { title: 'Love 911',                     poster: 'assets/Love 911.png',            rating: '4.9' },
+		jujutsukaisen0:    { title: 'Jujutsu Kaisen 0',             poster: 'assets/Jujutsu kaisen 0.png',    rating: '4.4' },
+		devilwearsprada:   { title: 'The Devil Wears Prada',        poster: 'assets/Devil wears prada.png',   rating: '4.6' },
+		avengers:          { title: 'Avengers : End Game',          poster: 'assets/Avangers.png',            rating: '4.9' },
+		kuasagelap:        { title: 'Kuasa Gelap',                  poster: 'assets/kuasa gelap 1.png',       rating: '4.7' },
+		sore:              { title: 'Sore : Istri Dari Masa Depan', poster: 'assets/Sore.png',                rating: '4.4' },
+		mencuriradensaleh: { title: 'Mencuri Raden Saleh',          poster: 'assets/mencuri raden saleh.png', rating: '4.6' },
+		agaklaen:          { title: 'Agak Laen : Menyala Pantiku',  poster: 'assets/agak laen.png',           rating: '4.9' },
 	};
-	const movie = MOVIES[params.get('id')] || MOVIES.love911;
+	const movie = MOVIES[params.get('id')] || null; // null = id tidak dikenal
 
 	const posterEl = document.getElementById('poster');
-	posterEl.src = movie.poster;
-	posterEl.alt = movie.title;
-	document.getElementById('movie-title').textContent = movie.title;
-	document.getElementById('movie-rating').textContent = movie.rating;
-	document.title = `Pembayaran - ${movie.title}`;
+	if (movie) {
+		posterEl.src = movie.poster;
+		posterEl.alt = movie.title;
+		document.getElementById('movie-title').textContent = movie.title;
+		// judul panjang dikecilkan supaya tidak terlalu memakan tempat
+		if (movie.title.length > 20) document.getElementById('movie-title').style.fontSize = '40px';
+		document.getElementById('movie-rating').textContent = movie.rating;
+		document.title = `Pembayaran - ${movie.title}`;
+	} else {
+		posterEl.style.visibility = 'hidden';
+		document.getElementById('movie-title').textContent = 'Film tidak ditemukan';
+		document.getElementById('movie-rating').textContent = '-';
+	}
 
-	// jadwal
+	
 	const dm = /^(\d{4})-(\d{2})-(\d{2})$/.exec(params.get('d') || '');
 	const time = params.get('t') || '';
 	let scheduleText = '-';
@@ -77,7 +91,6 @@
 	}
 	document.getElementById('schedule').textContent = scheduleText;
 
-	// kursi
 	const SEAT_RE = /^[A-HJ-L](?:[1-9]|1[0-6])$/; // baris A-L tanpa I, nomor 1-16
 	const seats = [...new Set(params.getAll('seat'))]
 		.filter((seat) => SEAT_RE.test(seat))
@@ -85,8 +98,7 @@
 		.sort((a, b) => (a[0] === b[0] ? Number(a.slice(1)) - Number(b.slice(1)) : a[0] < b[0] ? -1 : 1));
 	const qty = seats.length;
 
-	
-	// total
+
 	const ticketPrice = Number(totalEl.dataset.ticket);
 	const fee = Number(totalEl.dataset.fee);
 	const feeCount = qty > 0 ? 1 : 0;
@@ -98,16 +110,16 @@
 	document.getElementById('fee-price').textContent = `${rupiah(fee)} x ${feeCount}`;
 	totalEl.textContent = rupiah(total);
 
-	// Tanpa kursi, pembayaran tidak boleh jalan
+	// Tanpa kursi atau film tidak dikenal, pembayaran tidak boleh jalan
 	const payButton = document.getElementById('pay-button');
-	payButton.disabled = qty === 0;
+	payButton.disabled = qty === 0 || !movie;
 
-	// Tombol bayar (sementara masih demo, belum ada backend)
+	// Tombol bayar 
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
-		if (qty === 0) return;
+		if (qty === 0 || !movie) return;
 		const method = form.querySelector('input[name="payment"]:checked').value;
-		alert(`Pembayaran ${rupiah(total)} untuk ${qty} tiket (${seats.join(', ')}) via ${method} (demo, belum terhubung backend)`);
+		alert(`Pembayaran ${rupiah(total)} film ${movie.title}, ${qty} tiket (${seats.join(', ')}) via ${method}`);
 	});
 })();
 

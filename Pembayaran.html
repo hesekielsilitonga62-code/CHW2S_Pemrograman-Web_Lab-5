@@ -11,7 +11,6 @@
 
   <link rel="stylesheet" href="style.css" />
 
-
   <style>
     /* radio: kosong = lingkaran outline, terpilih = terisi putih */
     .radio-pay {
@@ -28,7 +27,7 @@
     .radio-pay:checked { background: #fff; }
     .radio-pay:focus-visible { outline: 2px solid #ffc600; outline-offset: 2px; }
 
-    
+    /* tombol bayar gak idop (belmm ada kursi) */
     #pay-button:disabled { opacity: .5; cursor: not-allowed; }
   </style>
 
@@ -46,8 +45,7 @@
       <input
         type="search"
         placeholder="Search movie here"
-        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
-      />
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"/>
     </div>
 
     <nav class="flex items-center gap-10">
@@ -56,18 +54,19 @@
     </nav>
   </header>
 
+
   <main class="mx-auto w-full max-w-[823px] px-4 py-10 md:px-0 md:py-[40px]">
     <div class="flex flex-col gap-6 md:flex-row">
 
  
       <img id="poster" src="assets/Love 911.png" alt="Love 911"
-        class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0"/>
-
-
+        class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0"
+      />
+      <!-- Kolom kanan -->
       <div class="flex min-w-0 flex-1 flex-col">
 
-
-        <div class="flex items-center gap-3">
+        <!-- Judul film -->
+        <div class="flex flex-wrap items-center gap-3">
           <h1 id="movie-title" class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none">Love 911</h1>
           <div class="flex items-center gap-2 text-[16px] font-light">
             <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" />
@@ -78,7 +77,7 @@
         <p class="m-0 mt-2 text-[17px] font-light leading-tight">Plaza Medan Fair XXI, Regular</p>
         <p id="schedule" class="m-0 text-[17px] font-light leading-tight">-</p>
 
-
+        
         <section class="mt-4 rounded-lg bg-red px-3 py-2">
           <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Detail Transaksi</h2>
           <dl class="m-0 grid grid-cols-[1fr_auto] gap-x-8 text-[17px] font-light leading-snug md:grid-cols-[1fr_1fr]">
@@ -91,7 +90,7 @@
           </dl>
         </section>
 
-
+    
         <section class="mt-4 rounded-lg bg-red px-3 py-2">
           <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Metode Pembayaran</h2>
 
@@ -112,8 +111,8 @@
                 <input type="radio" name="payment" value="Ovo" class="radio-pay mr-3 md:mr-[14px]" />
               </label>
               <label class="flex cursor-pointer items-center justify-between text-[17px] font-light leading-[1.45]">
-                Qris
-                <input type="radio" name="payment" value="Qris" class="radio-pay mr-3 md:mr-[14px]" />
+                Bank
+                <input type="radio" name="payment" value="Bank" class="radio-pay mr-3 md:mr-[14px]" />
               </label>
             </fieldset>
           </form>
