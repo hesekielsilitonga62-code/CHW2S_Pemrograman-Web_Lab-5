@@ -30,7 +30,7 @@
 
 <body class="m-0 bg-blue font-['Hind',sans-serif] text-white">
 
-  <!-- ===================== HEADER ===================== -->
+
   <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
     <a href="beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
 
@@ -49,19 +49,19 @@
     </nav>
   </header>
 
-  <!-- ===================== PEMBAYARAN ===================== -->
+
   <main class="mx-auto w-full max-w-[823px] px-4 py-10 md:px-0 md:py-[40px]">
     <div class="flex flex-col gap-6 md:flex-row">
 
-      <!-- Poster (diisi script.js dari ?id=...) -->
+  
       <img id="poster" src="assets/Love 911.png" alt="Love 911"
         class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0"
       />
 
-      <!-- Kolom kanan -->
+
       <div class="flex min-w-0 flex-1 flex-col">
 
-        <!-- Judul film -->
+
         <div class="flex items-center gap-3">
           <h1 id="movie-title" class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none">Love 911</h1>
           <div class="flex items-center gap-2 text-[16px] font-light">
@@ -73,7 +73,7 @@
         <p class="m-0 mt-2 text-[17px] font-light leading-tight">Plaza Medan Fair XXI, Regular</p>
         <p id="schedule" class="m-0 text-[17px] font-light leading-tight">-</p>
 
-        <!-- Detail transaksi (diisi script.js dari ?seat=...&seat=...) -->
+
         <section class="mt-4 rounded-lg bg-red px-3 py-2">
           <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Detail Transaksi</h2>
           <dl class="m-0 grid grid-cols-[1fr_auto] gap-x-8 text-[17px] font-light leading-snug md:grid-cols-[1fr_1fr]">
@@ -86,7 +86,7 @@
           </dl>
         </section>
 
-        <!-- Metode pembayaran -->
+
         <section class="mt-4 rounded-lg bg-red px-3 py-2">
           <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Metode Pembayaran</h2>
 
@@ -116,23 +116,8 @@
       </div>
     </div>
 
-    <!-- Total + tombol bayar -->
-    <section class="mt-5 overflow-hidden rounded-lg">
-      <div class="flex items-center justify-between bg-red px-4 py-3">
-        <span class="text-[25px] font-bold">Total Bayar</span>
-        <span id="total" class="text-[24px] font-bold" data-ticket="50000" data-fee="4200">Rp54.200</span>
-      </div>
-      <button
-        id="pay-button" type="submit" form="payment-form" class="block h-[48px] w-full cursor-pointer border-0 bg-yellow font-['Josefin_Sans',sans-serif] text-[26px] text-black transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"> Lakukan Pembayaran
-      </button>
-    </section>
-  </main>
 
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="flex min-h-[239px] w-full flex-col items-center justify-center gap-8 bg-red py-8">
-    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">About Us</a>
-    <a href="#" class="text-[43px] font-bold text-white no-underline hover:underline">Contact Us</a>
-  </footer>
+
 
   <style>
     /* kosong = lingkaran outline, terpilih = terisi putih */
