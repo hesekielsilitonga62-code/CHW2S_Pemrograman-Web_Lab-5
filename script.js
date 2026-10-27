@@ -1,3 +1,81 @@
+// Data film (dipakai halaman JamDanTanggal & Pembayaran)
+// Data producer, director, author, cast, dan synopsis dirangkum dari sumber publik (IMDb, Wikipedia, situs resmi/media); silakan koreksi bila perlu.
+const MOVIES = {
+	love911: {
+		title: 'Love 911', poster: 'assets/Love 911.png', rating: '4.9',
+		genre: 'Comedy, Romance',
+		producer: 'Baek Sun-hee, Son Seung-jin',
+		director: 'Jeong Gi-hun',
+		author: 'Jeong Gi-hun, Park Sang-min',
+		cast: 'Go Soo, Han Hyo-Joo',
+		synopsis: "A firefighter who lost his wife in a tragic accident and a doctor who is facing a lawsuit over a medical malpractice attempt to heal each other's emotional wounds as they work together in life-threatening emergency situations.",
+	},
+	jujutsukaisen0: {
+		title: 'Jujutsu Kaisen 0', poster: 'assets/Jujutsu kaisen 0.png', rating: '4.4',
+		genre: 'Action, Dark Fantasy',
+		producer: "Hiroaki Matsutani, Makoto Kimura, Toshihiro Maeda",
+		director: "Sunghoo Park",
+		author: "Gege Akutami (manga), Hiroshi Seko (screenplay)",
+		cast: "Megumi Ogata, Kana Hanazawa, Yuichi Nakamura",
+		synopsis: "Yuta Okkotsu is a nervous high school student haunted by his childhood friend Rika, who has become a powerful Curse. Satoru Gojo, a teacher at Jujutsu High, convinces him to enroll at the school for young exorcists, where Yuta must learn to face the Curse that follows him.",
+	},
+	devilwearsprada: {
+		title: 'The Devil Wears Prada', poster: 'assets/Devil wears prada.png', rating: '4.6',
+		genre: 'Comedy, Drama',
+		producer: "Wendy Finerman",
+		director: "David Frankel",
+		author: "Aline Brosh McKenna (screenplay), Lauren Weisberger (characters)",
+		cast: "Meryl Streep, Anne Hathaway, Emily Blunt, Stanley Tucci",
+		synopsis: "Almost twenty years after the original film, Miranda Priestly returns to a fashion and publishing world reshaped by the decline of print media. This time she goes head to head with Emily Charlton, her former assistant turned rival executive, as both fight over influence and advertising revenue.",
+	},
+	avengers: {
+		title: 'Avengers : End Game', poster: 'assets/Avangers.png', rating: '4.9',
+		genre: 'Sci-Fi, Superhero',
+		producer: "Kevin Feige",
+		director: "Anthony Russo, Joe Russo",
+		author: "Christopher Markus, Stephen McFeely",
+		cast: "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson",
+		synopsis: "After the devastation caused by Thanos, the surviving Avengers and their allies come together once more. With a plan built around time travel, they set out to undo the damage and restore the universe, whatever the cost.",
+	},
+	kuasagelap: {
+		title: 'Kuasa Gelap', poster: 'assets/kuasa gelap 1.png', rating: '4.7',
+		genre: 'Horror, Mystery',
+		producer: "Robert Ronny, Arvin Sutedja, Pandu Birantoro",
+		director: "Bobby Prasetyo",
+		author: "Robert Ronny, Andri Cahyadi",
+		cast: "Lukman Sardi, Jerome Kurnia, Astrid Tiar, Lea Ciarachel, Freya JKT48",
+		synopsis: "After a summoning ritual goes wrong, two girls become possessed, and their families turn to Father Rendra, a veteran exorcist. He needs help from Father Thomas, a young priest struggling with doubts about his faith, and together they face a possession far more serious than it first appears.",
+	},
+	sore: {
+		title: 'Sore : Istri Dari Masa Depan', poster: 'assets/Sore.png', rating: '4.4',
+		genre: 'Drama, Sci-Fi',
+		producer: "Suryana Paramita",
+		director: "Yandy Laurens",
+		author: "Yandy Laurens",
+		cast: "Dion Wiyoko, Sheila Dara Aisha, Goran Bogdan",
+		synopsis: "Jonathan, a photographer who neglects his own health, has his routine upended when a mysterious woman named Sore appears and claims to be his wife from the future. She has one mission: to change his habits and way of life before it is too late.",
+	},
+	mencuriradensaleh: {
+		title: 'Mencuri Raden Saleh', poster: 'assets/mencuri raden saleh.png', rating: '4.6',
+		genre: 'Action, Crime, Heist',
+		producer: "Cristian Imanuell",
+		director: "Angga Dwimas Sasongko",
+		author: "Angga Dwimas Sasongko, Husein M. Atmodjo",
+		cast: "Iqbaal Ramadhan, Angga Yunanda, Rachel Amanda, Umay Shahab, Aghniny Haque, Ari Irham",
+		synopsis: "A group of young friends assemble a team to steal a famous painting by the maestro Raden Saleh from the State Palace. Their plan involves forgery, hacking and manipulation, but along the way friendship, love and family are put at risk.",
+	},
+	agaklaen: {
+		title: 'Agak Laen : Menyala Pantiku', poster: 'assets/agak laen.png', rating: '4.9',
+		genre: 'Comedy, Mystery',
+		producer: "Dipa Andika, Ernest Prakasa",
+		director: "Muhadkly Acho",
+		author: "Muhadkly Acho",
+		cast: "Boris Bokir, Indra Jegel, Oki Rengga, Bene Dion",
+		synopsis: "After repeatedly failing their missions, four detectives are given one last chance: go undercover in a nursing home to find the fugitive wanted for the murder of the mayor's child.",
+	},
+};
+const getMovie = (id) => MOVIES[id] || null; // null = id tidak dikenal
+
 // carousel
 (() => {
 	const carousel = document.getElementById('carousel');
@@ -52,17 +130,7 @@
 	const rupiah = (n) => 'Rp' + n.toLocaleString('id-ID');
 
 
-	const MOVIES = {
-		love911:           { title: 'Love 911',                     poster: 'assets/Love 911.png',            rating: '4.9' },
-		jujutsukaisen0:    { title: 'Jujutsu Kaisen 0',             poster: 'assets/Jujutsu kaisen 0.png',    rating: '4.4' },
-		devilwearsprada:   { title: 'The Devil Wears Prada',        poster: 'assets/Devil wears prada.png',   rating: '4.6' },
-		avengers:          { title: 'Avengers : End Game',          poster: 'assets/Avangers.png',            rating: '4.9' },
-		kuasagelap:        { title: 'Kuasa Gelap',                  poster: 'assets/kuasa gelap 1.png',       rating: '4.7' },
-		sore:              { title: 'Sore : Istri Dari Masa Depan', poster: 'assets/Sore.png',                rating: '4.4' },
-		mencuriradensaleh: { title: 'Mencuri Raden Saleh',          poster: 'assets/mencuri raden saleh.png', rating: '4.6' },
-		agaklaen:          { title: 'Agak Laen : Menyala Pantiku',  poster: 'assets/agak laen.png',           rating: '4.9' },
-	};
-	const movie = MOVIES[params.get('id')] || null; // null = id tidak dikenal
+	const movie = getMovie(params.get('id')); // null = id tidak dikenal
 
 	const posterEl = document.getElementById('poster');
 	if (movie) {
@@ -132,7 +200,31 @@
 
 	const dateLabel = document.getElementById('date-label');
 
-	const MOVIE = 'Love 911';
+	// detail film berdasarkan ?id=... di URL
+	const movie = getMovie(new URLSearchParams(window.location.search).get('id'));
+	const setText = (id, value) => { document.getElementById(id).textContent = value; };
+	const posterEl = document.getElementById('movie-poster');
+	if (movie) {
+		posterEl.src = movie.poster;
+		posterEl.alt = movie.title;
+		setText('movie-title', movie.title);
+		// judul panjang dikecilkan supaya tidak terlalu memakan tempat
+		if (movie.title.length > 20) document.getElementById('movie-title').style.fontSize = '40px';
+		setText('movie-rating', movie.rating);
+		setText('movie-genre', movie.genre);
+		setText('movie-producer', movie.producer);
+		setText('movie-director', movie.director);
+		setText('movie-author', movie.author);
+		setText('movie-cast', movie.cast);
+		setText('movie-synopsis', movie.synopsis);
+		document.title = `Pilih Jam dan Tanggal - ${movie.title}`;
+	} else {
+		posterEl.style.visibility = 'hidden';
+		for (const id of ['movie-rating', 'movie-genre', 'movie-producer', 'movie-director', 'movie-author', 'movie-cast', 'movie-synopsis'])
+			setText(id, '-');
+		setText('movie-title', 'Film tidak ditemukan');
+	}
+
 	const DAYS = 7;
 	const TIMES = ['10:00', '13:00', '16:00', '19:00'];
 	const NEXT_PAGE = 'Pembayaran.html'; // ganti ke halaman pilih seat jika sudah ada
@@ -166,7 +258,7 @@
 	};
 	const hasSlot = (date) => TIMES.some((t) => !isPast(date, t));
 
-	let selectedDate = dates.find(hasSlot) || null;
+	let selectedDate = movie ? (dates.find(hasSlot) || null) : null;
 
 	const el = (tag, className, text) => {
 		const node = document.createElement(tag);
@@ -177,7 +269,7 @@
 
 	const render = () => {
 		dateList.replaceChildren(...dates.map((d) => {
-			const off = !hasSlot(d);
+			const off = !movie || !hasSlot(d);
 			const active = d === selectedDate;
 			const btn = el('button', `${DATE_BASE} ${off ? DATE_OFF : active ? DATE_ACTIVE : DATE_IDLE}`);
 			btn.type = 'button';

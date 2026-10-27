@@ -276,6 +276,9 @@
   .grid {
     display: grid;
   }
+  .hidden {
+    display: none;
+  }
   .size-full {
     width: 100%;
     height: 100%;

@@ -41,7 +41,7 @@
 
       <!-- Poster + tombol -->
       <div class="w-full md:w-[308px] md:shrink-0">
-        <img src="assets/Love 911.png" alt="Love 911" class="h-auto w-full rounded-lg object-cover md:h-[437px]" />
+        <img id="movie-poster" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" class="h-auto w-full rounded-lg object-cover md:h-[437px]" />
         <div class="mt-1 flex gap-[10px]">
           <button type="button" class="h-[36px] flex-1 cursor-pointer rounded-lg border-0 bg-yellow text-[20px] font-light text-black transition hover:brightness-95">
             Watch Trailer
@@ -56,25 +56,23 @@
 
       <!-- Info film -->
       <div class="min-w-0 flex-1">
-        <div class="flex items-center gap-3">
-          <h1 class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none md:text-[64px]">Love 911</h1>
+        <div class="flex flex-wrap items-center gap-3">
+          <h1 id="movie-title" class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none md:text-[64px]"></h1>
           <div class="flex items-center gap-2 text-[18px] font-light">
-            <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> 4.9
+            <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" /> <span id="movie-rating"></span>
           </div>
         </div>
 
         <dl class="m-0 mt-2 text-[19px] font-light leading-8">
-          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Genre Film</dt><span aria-hidden="true">:</span><dd class="m-0">Comedy, Romance</dd></div>
-          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Producer</dt><span aria-hidden="true">:</span><dd class="m-0">Baek Sun-hee, Son Seung-jin</dd></div>
-          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Director</dt><span aria-hidden="true">:</span><dd class="m-0">Jeong Gi-hun</dd></div>
-          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Author</dt><span aria-hidden="true">:</span><dd class="m-0">Jeong Gi-hun, Park Sang-min</dd></div>
-          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Cast</dt><span aria-hidden="true">:</span><dd class="m-0">Go Soo, Han Hyo-Joo</dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Genre Film</dt><span aria-hidden="true">:</span><dd id="movie-genre" class="m-0"></dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Producer</dt><span aria-hidden="true">:</span><dd id="movie-producer" class="m-0"></dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Director</dt><span aria-hidden="true">:</span><dd id="movie-director" class="m-0"></dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Author</dt><span aria-hidden="true">:</span><dd id="movie-author" class="m-0"></dd></div>
+          <div class="grid grid-cols-[110px_20px_1fr]"><dt>Cast</dt><span aria-hidden="true">:</span><dd id="movie-cast" class="m-0"></dd></div>
         </dl>
 
         <h2 class="m-0 mt-10 font-['Josefin_Sans',sans-serif] text-[30px] font-bold leading-tight">Synopsis</h2>
-        <p class="m-0 max-w-[500px] text-[19px] font-light leading-8">
-          A firefighter who lost his wife in a tragic accident and a doctor who is facing a lawsuit over a medical malpractice attempt to heal each other's emotional wounds as they work together in life-threatening emergency situations.
-        </p>
+        <p id="movie-synopsis" class="m-0 max-w-[500px] text-[19px] font-light leading-8"></p>
       </div>
     </section>
 
