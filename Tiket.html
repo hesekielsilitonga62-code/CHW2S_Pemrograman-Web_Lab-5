@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiket</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="m-0 flex min-h-screen flex-col bg-blue font-['Hind',sans-serif] text-white">
+  <!-- ===================== HEADER ===================== -->
+  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+    <a href="Beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+
+    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+      <img src="assets/Search.svg" alt="Search" class="h-[29px] w-[29px]" />
+      <input
+        type="search"
+        placeholder="Search movie here"
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+      />
+    </div>
+
+    <nav class="flex items-center gap-10">
+      <a href="Dashboard.html"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+      <a href="Profile.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+    </nav>
+  </header>
+
+  <main class="mx-auto w-full max-w-[823px] flex-1 px-4 py-10 md:px-0 md:py-[40px]">
+    <div class="flex flex-col gap-6 md:flex-row">
+
+      <img id="t-poster" src="assets/Love 911.png" alt="Love 911"
+        class="h-auto w-full rounded-lg object-cover md:h-[440px] md:w-[310px] md:shrink-0" />
+
+      <div class="flex min-w-0 flex-1 flex-col">
+        <div class="flex flex-wrap items-center gap-3">
+          <h1 id="t-title" class="m-0 font-['Josefin_Sans',sans-serif] text-[56px] font-bold leading-none">Love 911</h1>
+          <div class="flex items-center gap-2 text-[16px] font-light">
+            <img src="assets/Bintang.svg" alt="Rating" class="h-[23px] w-[24px]" />
+            <span id="t-rating">4.9</span>
+          </div>
+        </div>
+
+        <p id="t-venue" class="m-0 mt-2 text-[17px] font-light leading-tight">Plaza Medan Fair XXI, Regular</p>
+        <p id="t-schedule" class="m-0 text-[17px] font-light leading-tight">-</p>
+
+        <section class="mt-4 rounded-lg bg-red px-3 py-2">
+          <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Detail Transaksi</h2>
+          <dl class="m-0 grid grid-cols-[1fr_auto] gap-x-8 text-[17px] font-light leading-snug md:grid-cols-[1fr_1fr]">
+            <dt id="t-ticket-label">1 Tiket</dt>
+            <dd id="t-seat-list" class="m-0">-</dd>
+            <dt>Reguler</dt>
+            <dd id="t-ticket-price" class="m-0">-</dd>
+            <dt>Biaya Layanan</dt>
+            <dd id="t-fee-price" class="m-0">-</dd>
+          </dl>
+        </section>
+
+        <section class="mt-4 flex items-center justify-between rounded-lg bg-red px-3 py-2">
+          <h2 class="m-0 font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Metode Pembayaran</h2>
+          <span id="t-method" class="mr-3 text-[17px] font-light md:mr-[14px]">-</span>
+        </section>
+
+        <section class="mt-4 flex items-center justify-between rounded-lg bg-red px-3 py-3">
+          <span class="font-['Josefin_Sans',sans-serif] text-[24px] font-normal leading-tight">Total Bayar</span>
+          <span id="t-total" class="text-[24px] font-normal">-</span>
+        </section>
+
+        <a href="Dashboard.html" class="mt-5 inline-flex h-[36px] w-[97px] items-center justify-center self-start rounded-lg bg-yellow text-[20px] font-light text-black no-underline">Kembali</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="grid w-full grid-cols-1 items-center gap-6 bg-red px-4 py-10 md:min-h-[239px] md:grid-cols-2 md:gap-0 md:px-0">
+    <div class="flex justify-center">
+      <a href="Beranda.html" class="text-[56px] font-bold leading-none text-yellow no-underline">TIKETAN</a>
+    </div>
+    <div class="flex flex-col items-center gap-1 md:items-start">
+      <a href="#" class="text-[28px] font-bold text-white no-underline hover:underline">About Us</a>
+      <a href="#" class="text-[28px] font-bold text-white no-underline hover:underline">Contact Us</a>
+      <p class="m-0 text-[22px] font-light">&copy; Tiketan Kelompok CHW2S 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
