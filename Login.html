@@ -55,7 +55,7 @@
       </h1>
 
       <!-- Form -->
-      <form action="#" method="post" class="flex w-full max-w-[532px] flex-col">
+      <form id="loginForm" class="flex w-full max-w-[532px] flex-col"></form>
 
         <!-- Input -->
         <label for="email" class="sr-only">Email</label>
@@ -108,6 +108,13 @@
       </form>
     </section>
   </main>
+
+      <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // cegah submit bawaan browser
+      window.location.href = 'Beranda.html'; // pindah halaman
+    });
+  </script>
 
 </body>
 </html>
