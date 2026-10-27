@@ -48,18 +48,66 @@
 	const form = document.getElementById('payment-form');
 	if (!totalEl || !form) return; // bukan halaman Pembayaran
 
+	const params = new URLSearchParams(window.location.search);
 	const rupiah = (n) => 'Rp' + n.toLocaleString('id-ID');
 
-	// Total = harga tiket x jumlah + biaya layanan x jumlah
-	const qty = 1;
-	const total = Number(totalEl.dataset.ticket) * qty + Number(totalEl.dataset.fee) * qty;
+
+	const MOVIES = {
+		love911:        { title: 'Love 911',         poster: 'assets/Love 911.png',         rating: '4.9' },
+		jujutsukaisen0: { title: 'Jujutsu Kaisen 0', poster: 'assets/Jujutsu kaisen 0.png', rating: '4.4' },
+	};
+	const movie = MOVIES[params.get('id')] || MOVIES.love911;
+
+	const posterEl = document.getElementById('poster');
+	posterEl.src = movie.poster;
+	posterEl.alt = movie.title;
+	document.getElementById('movie-title').textContent = movie.title;
+	document.getElementById('movie-rating').textContent = movie.rating;
+	document.title = `Pembayaran - ${movie.title}`;
+
+	// jadwal
+	const dm = /^(\d{4})-(\d{2})-(\d{2})$/.exec(params.get('d') || '');
+	const time = params.get('t') || '';
+	let scheduleText = '-';
+	if (dm) {
+		const date = new Date(Number(dm[1]), Number(dm[2]) - 1, Number(dm[3]));
+		const f = (opt) => new Intl.DateTimeFormat('en-US', opt).format(date);
+		scheduleText = `${f({ weekday: 'long' })}, ${date.getDate()} ${f({ month: 'long' })} ${date.getFullYear()}`;
+		if (/^\d{2}:\d{2}$/.test(time)) scheduleText += `, ${time}`;
+	}
+	document.getElementById('schedule').textContent = scheduleText;
+
+	// kursi
+	const SEAT_RE = /^[A-HJ-L](?:[1-9]|1[0-6])$/; // baris A-L tanpa I, nomor 1-16
+	const seats = [...new Set(params.getAll('seat'))]
+		.filter((seat) => SEAT_RE.test(seat))
+		.slice(0, 10)
+		.sort((a, b) => (a[0] === b[0] ? Number(a.slice(1)) - Number(b.slice(1)) : a[0] < b[0] ? -1 : 1));
+	const qty = seats.length;
+
+	
+	// total
+	const ticketPrice = Number(totalEl.dataset.ticket);
+	const fee = Number(totalEl.dataset.fee);
+	const feeCount = qty > 0 ? 1 : 0;
+	const total = ticketPrice * qty + fee * feeCount;
+
+	document.getElementById('ticket-label').textContent = `${qty} Tiket`;
+	document.getElementById('seat-list').textContent = qty ? seats.join(', ') : 'Belum ada kursi';
+	document.getElementById('ticket-price').textContent = `${rupiah(ticketPrice)} x ${qty}`;
+	document.getElementById('fee-price').textContent = `${rupiah(fee)} x ${feeCount}`;
 	totalEl.textContent = rupiah(total);
+
+	// Tanpa kursi, pembayaran tidak boleh jalan
+	const payButton = document.getElementById('pay-button');
+	payButton.disabled = qty === 0;
 
 	// Tombol bayar (sementara masih demo, belum ada backend)
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
+		if (qty === 0) return;
 		const method = form.querySelector('input[name="payment"]:checked').value;
-		alert(`Pembayaran ${rupiah(total)} via ${method} (demo, belum terhubung backend)`);
+		alert(`Pembayaran ${rupiah(total)} untuk ${qty} tiket (${seats.join(', ')}) via ${method} (demo, belum terhubung backend)`);
 	});
 })();
 
@@ -182,6 +230,7 @@
 	const chosenEl = document.getElementById("chosen");
 	const confirmBtn = document.getElementById("confirm");
 	const messageEl = document.getElementById("message");
+	if (!seatsContainer) return; // bukan halaman Seat
 
 	// 11 baris x 16 kursi (A-L tanpa I), dengan lorong tengah setelah kursi nomor 8; semua kursi dimulai dalam keadaan kosong.
 	function renderSeats() {
