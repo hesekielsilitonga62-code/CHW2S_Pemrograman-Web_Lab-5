@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;700&family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="m-0 flex min-h-screen flex-col bg-blue font-['Hind',sans-serif] text-white">
+  <!-- ===================== HEADER ===================== -->
+  <header class="flex h-[87px] w-full items-center gap-4 bg-red px-4 md:px-14">
+    <a href="Beranda.html" class="text-[32px] font-bold leading-none text-yellow no-underline md:text-[43px]">TIKETAN</a>
+
+    <div class="mx-auto flex h-[44px] w-full max-w-[688px] items-center gap-3 rounded-2xl bg-white/10 px-3 [box-shadow:0px_6px_15px_0px_rgba(0,0,0,0.25)]">
+      <img src="assets/Search.svg" alt="Search" class="h-[29px] w-[29px]" />
+      <input
+        type="search"
+        placeholder="Search movie here"
+        class="w-full border-0 bg-transparent text-[19px] font-light text-yellow outline-none placeholder:text-yellow"
+      />
+    </div>
+
+    <nav class="flex items-center gap-10">
+      <a href="Dashboard.html"><img src="assets/Dashboard.svg" alt="My tickets" class="h-[29px] w-[41px]" /></a>
+      <a href="Profile.html"><img src="assets/Profile.svg" alt="Account" class="h-[29px] w-[30px]" /></a>
+    </nav>
+  </header>
+
+  <main class="mx-auto flex w-full max-w-[823px] flex-1 flex-col items-center px-4 py-10 md:py-[50px]">
+
+    <!-- Avatar -->
+    <div class="flex h-[200px] w-[200px] items-center justify-center rounded-full border-[8px] border-yellow">
+      <img src="assets/Profile.svg" alt="Foto profil" class="h-[100px] w-[100px]" />
+    </div>
+
+    <h1 class="m-0 mt-4 font-['Josefin_Sans',sans-serif] text-[40px] font-bold leading-none">CHW2S</h1>
+    <p class="m-0 mt-1 text-[16px] font-light">chw2s@gmail.com</p>
+
+    <!-- Menu -->
+    <nav class="mt-8 w-full max-w-[420px]" aria-label="Menu profil">
+      <a href="Dashboard.html" class="block cursor-pointer list-none border-0 border-b border-white/10 py-3 text-[20px] font-light text-white no-underline marker:content-none [&::-webkit-details-marker]:hidden hover:text-yellow">Film Saya</a>
+
+      <details class="group">
+        <summary class="block cursor-pointer list-none border-0 border-b border-white/10 py-3 text-[20px] font-light text-white no-underline marker:content-none [&::-webkit-details-marker]:hidden hover:text-yellow">Riwayat Transaksi</summary>
+        <ul id="history-list" class="m-0 list-none p-0 pb-3 text-[17px] font-light text-white/80"></ul>
+      </details>
+
+      <details class="group">
+        <summary class="block cursor-pointer list-none border-0 border-b border-white/10 py-3 text-[20px] font-light text-white no-underline marker:content-none [&::-webkit-details-marker]:hidden hover:text-yellow">Metode Pembayaran</summary>
+        <p class="m-0 pb-3 text-[17px] font-light text-white/80">Dana, Gopay, Ovo, dan Bank tersedia saat melakukan pembayaran.</p>
+      </details>
+
+      <details class="group">
+        <summary class="block cursor-pointer list-none border-0 border-b border-white/10 py-3 text-[20px] font-light text-white no-underline marker:content-none [&::-webkit-details-marker]:hidden hover:text-yellow">Bantuan</summary>
+        <p class="m-0 pb-3 text-[17px] font-light text-white/80">Ada kendala? Hubungi tim Tiketan Kelompok CHW2S lewat chw2s@gmail.com.</p>
+      </details>
+    </nav>
+
+    <a href="Login.html" class="mt-10 text-[20px] font-light text-[#e00000] no-underline hover:underline">Keluar</a>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <!-- ===================== FOOTER ===================== -->
+ <footer class="grid w-full grid-cols-1 items-center gap-6 bg-red px-4 py-10 md:min-h-[239px] md:grid-cols-2 md:gap-0 md:px-0">
+    <div class="flex justify-center">
+      <a href="Beranda.html" class="text-[56px] font-bold leading-none text-yellow no-underline">TIKETAN</a>
+    </div>
+    <div class="flex flex-col items-center gap-1 md:items-start">
+      <a href="AboutUs.html" class="text-[28px] font-bold text-white no-underline hover:underline">About Us</a>
+      <a href="ContactUs.html" class="text-[28px] font-bold text-white no-underline hover:underline">Contact Us</a>
+      <p class="m-0 text-[22px] font-light">&copy; Tiketan Kelompok CHW2S 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
